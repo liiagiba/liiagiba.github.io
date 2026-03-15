@@ -1,0 +1,9 @@
+title: Abigail Ranee
+description: Debut thriller author — Gone Without Goodbye available now on Amazon.
+url: "https://byabigailranee.com"
+baseurl: ""
+permalink: /blog/:slug/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

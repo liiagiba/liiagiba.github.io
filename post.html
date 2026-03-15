@@ -1,0 +1,116 @@
+---
+layout: default
+---
+
+<section class="post-hero">
+  <div class="post-hero-inner">
+    <a href="/#blog" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Blog
+    </a>
+    <p class="post-eyebrow">{{ page.category }}</p>
+    <h1>{{ page.title }}</h1>
+    <div class="post-hero-divider"></div>
+    <div class="post-meta-row">
+      <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+      <span>·</span>
+      <span>{{ page.read_time | default: 5 }} min read</span>
+      <span>·</span>
+      <span>By Abigail Ranee</span>
+    </div>
+  </div>
+</section>
+
+{% if page.image %}
+<img src="{{ page.image }}" alt="{{ page.title }}" class="post-hero-image" />
+{% endif %}
+
+<div class="post-layout">
+  <article class="post-body">
+    {{ content }}
+
+    <div class="post-footer">
+      <div class="post-tags">
+        {% for tag in page.tags %}
+        <span class="post-tag-pill">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <div class="share-row">
+        <span>Share</span>
+        <a class="share-btn" href="https://www.instagram.com/" target="_blank" aria-label="Instagram">IG</a>
+        <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" aria-label="Facebook">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a class="share-btn" href="https://www.tiktok.com/" target="_blank" aria-label="TikTok">TK</a>
+      </div>
+    </div>
+  </article>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <h4>About the Author</h4>
+      <div class="author-card-inner">
+        <img src="/images/author.jpg" alt="Abigail Ranee" class="author-avatar"
+          onerror="this.style.display='none'" />
+        <div class="author-card-text">
+          <strong>Abigail Ranee</strong>
+          <p>Debut thriller author. Lover of dark, twisty stories and characters who refuse to give up. <em>Gone Without Goodbye</em> is her first novel.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>My Debut Novel</h4>
+      <img src="/images/cover.jpg" alt="Gone Without Goodbye" class="book-sidebar-img" />
+      <p class="sidebar-book-title">Gone Without Goodbye</p>
+      <p class="sidebar-book-desc">When Maddie doesn't come back from the party, Kacey will risk everything to find out why.</p>
+      <a href="https://www.amazon.com/Gone-Without-Goodbye-Abigail-Ranee/dp/B0GP5NH4WC/" target="_blank" rel="noopener" class="btn-primary-full">
+        Buy on Amazon
+      </a>
+    </div>
+
+    <div class="sidebar-card">
+      <h4>More from the Blog</h4>
+      {% assign other_posts = site.posts | where_exp: "p", "p.url != page.url" | limit: 3 %}
+      {% for post in other_posts %}
+      <a href="{{ post.url }}" class="related-post">
+        {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+        {% endif %}
+        <div class="related-post-text">
+          <span>{{ post.date | date: "%B %-d" }} · {{ post.read_time | default: 5 }} min read</span>
+          <p>{{ post.title }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+  </aside>
+</div>
+
+<section class="more-posts">
+  <div class="more-posts-inner">
+    <h3>Keep Reading</h3>
+    <div class="more-posts-rule"></div>
+    <div class="more-posts-grid">
+      {% assign other_posts = site.posts | where_exp: "p", "p.url != page.url" | limit: 2 %}
+      {% for post in other_posts %}
+      <a href="{{ post.url }}" class="blog-card">
+        {% if post.image %}
+        <img src="{{ post.image }}" alt="{{ post.title }}" />
+        {% endif %}
+        <div class="blog-card-body">
+          <div class="blog-meta">
+            <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+            <span>·</span>
+            <span>{{ post.read_time | default: 5 }} min read</span>
+          </div>
+          <h4>{{ post.title }}</h4>
+          <p>{{ post.excerpt | strip_html | truncate: 110 }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
