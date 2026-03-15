@@ -61,16 +61,6 @@ layout: default
     </div>
 
     <div class="sidebar-card">
-      <h4>My Debut Novel</h4>
-      <img src="/images/cover.jpg" alt="Gone Without Goodbye" class="book-sidebar-img" />
-      <p class="sidebar-book-title">Gone Without Goodbye</p>
-      <p class="sidebar-book-desc">When Maddie doesn't come back from the party, Kacey will risk everything to find out why.</p>
-      <a href="https://www.amazon.com/Gone-Without-Goodbye-Abigail-Ranee/dp/B0GP5NH4WC/" target="_blank" rel="noopener" class="btn-primary-full">
-        Buy on Amazon
-      </a>
-    </div>
-
-    <div class="sidebar-card">
       <h4>More from the Blog</h4>
       {% assign other_posts = site.posts | where_exp: "p", "p.url != page.url" | limit: 3 %}
       {% for post in other_posts %}
@@ -84,6 +74,16 @@ layout: default
         </div>
       </a>
       {% endfor %}
+    </div>
+
+    <div class="sidebar-card">
+      <h4>My Debut Novel</h4>
+      <img src="/images/cover.jpg" alt="Gone Without Goodbye" class="book-sidebar-img" />
+      <p class="sidebar-book-title">Gone Without Goodbye</p>
+      <p class="sidebar-book-desc">When Maddie doesn't come back from the party, Kacey will risk everything to find out why.</p>
+      <a href="https://www.amazon.com/Gone-Without-Goodbye-Abigail-Ranee/dp/B0GP5NH4WC/ref=sr_1_1?sr=8-1" target="_blank" rel="noopener" class="btn-primary-full">
+        Buy on Amazon
+      </a>
     </div>
 
   </aside>
